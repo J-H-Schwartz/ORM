@@ -6,12 +6,13 @@ db = MySQLDatabase('herboristerie', user='jonathan', password='29072015aA',
 
 
 class BaseModel(Model):
+    name = CharField()
+
     class Meta:
         database = db
 
 
 class SousClasse(BaseModel):
-    name = CharField()
     name_french = CharField()
 
     class Meta:
@@ -20,7 +21,6 @@ class SousClasse(BaseModel):
 
 class Famille(BaseModel):
     sous_classe = ForeignKeyField(SousClasse, column_name="id_sous_classe")
-    name = CharField()
     name_french = CharField()
 
     class Meta:
@@ -28,7 +28,6 @@ class Famille(BaseModel):
 
 
 class Plante(BaseModel):
-    name = CharField()
     indication = CharField()
     used_part = CharField()
     price = DecimalField(30, 2)
