@@ -1,8 +1,28 @@
 from models import *
 
 
+def update_table(table, field, instance_id, update):
+    if table == "P":
+        plante = Plante.update_table(field=field, instance_id=instance_id, update=update)
+        return plante
+    elif table == "U":
+        used_part = PartieUtilisee.update_table(field=field, instance_id=instance_id, update=update)
+        return used_part
+    elif table == "I":
+        indication = IndicationPlante.update_table(field=field, instance_id=instance_id, update=update)
+        return indication
+    elif table == "F":
+        famille = Famille.update_table(field=field, instance_id=instance_id, update=update)
+        return famille
+    elif table == "S":
+        sous_classe = SousClasse.update_table(field=field, instance_id=instance_id, update=update)
+        return sous_classe
+    else:
+        return False
+
+
 def list_all_tables():
-    print(db1.tables)
+    print(db.get_tables())
 
 
 def average_indication_price():
