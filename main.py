@@ -2,6 +2,7 @@ from controlers import *
 
 
 def main():
+    list_all_tables()
 
     result = average_indication_price()
     for average_price, indication in result.tuples():

@@ -1,9 +1,13 @@
 from models import *
 
 
+def list_all_tables():
+    print(db1.tables)
+
+
 def average_indication_price():
-    average_indication_price_list = Plante.select(fn.round(fn.AVG(Plante.price), 2), Plante.indication).group_by(
-        Plante.indication)
+    average_indication_price_list = Plante.select(fn.round(fn.AVG(Plante.price), 2), IndicationPlante.name)\
+        .join(IndicationPlante, JOIN.INNER).group_by(IndicationPlante.name)
     return average_indication_price_list
 
 
